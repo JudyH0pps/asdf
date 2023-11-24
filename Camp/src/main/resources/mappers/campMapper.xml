@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.camp.model.dao.CampDao">
+
+	<!-- 캠프 생성 -->
+	<insert id="insertCamp" parameterType="Camp">
+		INSERT INTO camp (userKey, name, address, description, img, orgImg)
+		VALUES (#{userKey}, #{name}, #{address}, #{description}, #{img}, #{orgImg})
+	</insert>
+
+	<!-- 캠프 조회 -->
+	<select id="getCampById" parameterType="int" resultType="Camp">
+		SELECT *
+		FROM camp WHERE id = #{id}
+	</select>
+
+	<select id="selectAllCamp" resultType="Camp">
+		SELECT *
+		FROM camp
+	</select>
+
+
+	<select id="selectCamp" parameterType="Camp" resultType="Camp">
+		SELECT *
+		FROM camp
+	</select>
+
+	<!-- 캠프 업데이트 -->
+	<update id="updateCamp" parameterType="Camp">
+		UPDATE camp SET
+		userKey =
+		#{userKey},
+		name = #{name},
+		address = #{address},
+		description =
+		#{description}
+		WHERE id = #{id}
+	</update>
+
+	<!-- 캠프 삭제 -->
+	<delete id="deleteCamp" parameterType="int">
+		DELETE FROM camp WHERE id
+		= #{id}
+	</delete>
+
+
+</mapper>
